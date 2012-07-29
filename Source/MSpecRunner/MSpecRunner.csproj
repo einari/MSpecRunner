@@ -42,14 +42,38 @@
       <HintPath>..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\MonoDevelop.Ide.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\Solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\Solutions\packages\Machine.Specifications.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="ExecuteContextHandler.cs" />
     <Compile Include="MSpecRunnerCommands.cs" />
+    <Compile Include="Files\AssemblyLoader.cs" />
+    <Compile Include="Files\FileReader.cs" />
+    <Compile Include="Files\IAssemblyLoader.cs" />
+    <Compile Include="Files\IFileReader.cs" />
+    <Compile Include="Ninject\ConventionKernel.cs" />
+    <Compile Include="Specifications\ISpecificationManager.cs" />
+    <Compile Include="Specifications\ISpecificationsExecutor.cs" />
+    <Compile Include="Specifications\SpecificationManager.cs" />
+    <Compile Include="Specifications\SpecificationsExecutor.cs" />
+    <Compile Include="Specifications\SpecificationsToRun.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <EmbeddedResource Include="MSpecRunner.addin.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+    <Folder Include="Ninject\" />
+    <Folder Include="Specifications\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

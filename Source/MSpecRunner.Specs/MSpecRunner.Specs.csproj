@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>MSpecRunner.Specs</RootNamespace>
+    <AssemblyName>MSpecRunner.Specs</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Machine.Specifications">
+      <HintPath>..\Solutions\packages\Machine.Specifications.0.5.2.0\lib\Machine.Specifications.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\Solutions\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\Solutions\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Specifications\for_SpecificationManager\when_getting_a_single_specification.cs" />
+    <Compile Include="Specifications\for_SpecificationManager\when_getting_specifications_and_linenumber_is_within_class.cs" />
+    <Compile Include="Specifications\for_SpecificationManager\given\a_specification_manager.cs" />
+    <Compile Include="Specifications\for_SpecificationManager\given\a_specification_manager_with_an_assembly_and_a_source_file.cs" />
+    <Compile Include="Specifications\for_SpecificationsExecutor\when_running_a_namespace.cs" />
+    <Compile Include="Specifications\for_SpecificationsExecutor\when_running_specifications.cs" />
+    <Compile Include="Specifications\for_SpecificationsExecutor\given\a_specification_executor.cs" />
+    <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_been_defined.cs" />
+    <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_been_defined_and_there_are_specifications.cs" />
+    <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_not_been_defined.cs" />
+    <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_not_been_defined_but_specifications_has.cs" />
+    <Compile Include="Specifications\for_SpecificationsToRun\given\a_specifications_to_run_instance.cs" />
+    <Compile Include="FakeSpecs.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Specifications\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MSpecRunner\MSpecRunner.csproj">
+      <Project>{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}</Project>
+      <Name>MSpecRunner</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

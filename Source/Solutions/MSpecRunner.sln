@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoDevelop.Samples.DateInserter", "..\MSpecRunner\MSpecRunner.csproj", "{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSpecRunner", "..\MSpecRunner\MSpecRunner.csproj", "{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSpecRunner.Specs", "..\MSpecRunner.Specs\MSpecRunner.Specs.csproj", "{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{441C9DAA-BDEF-45F6-A92E-A8DF9CF0AA18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E3A50656-CA4D-44BD-A78B-F0AEB01D6E7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
