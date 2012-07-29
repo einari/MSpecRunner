@@ -30,16 +30,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Mono.TextEditor">
-      <HintPath>..\Libraries\Mono.TextEditor.dll</HintPath>
+    <Reference Include="MonoDevelop.Core">
+      <HintPath>..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\MonoDevelop.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MonoDevelop.Core">
-      <HintPath>..\Libraries\MonoDevelop.Core.dll</HintPath>
+    <Reference Include="Mono.TextEditor">
+      <HintPath>..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\Mono.TextEditor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="MonoDevelop.Ide">
-      <HintPath>..\Libraries\MonoDevelop.Ide.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Applications\MonoDevelop.app\Contents\MacOS\lib\monodevelop\bin\MonoDevelop.Ide.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
