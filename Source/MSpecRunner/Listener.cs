@@ -9,11 +9,23 @@ using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui;
 using MonoDevelop.Ide.Gui.Content;
 using Mono.TextEditor;
+using MonoDevelop.Core.Execution;
+using MonoDevelop.Ide.Gui.Pads;
+using MonoDevelop.Core;
 
 namespace MSpecRunner
 {
 	public class Listener : Machine.Specifications.Runner.Impl.RunListenerBase
 	{
+		static ProgressMonitorManager _manager = new ProgressMonitorManager();
+
+		static IProgressMonitor _console;
+
+		static Listener()
+		{
+			_console = _manager.GetOutputProgressMonitor("Machine.Specifications",(IconId)"md-pin-down",true,true);
+		}
+
 		public override void OnSpecificationStart (SpecificationInfo specification)
 		{
 			base.OnSpecificationStart (specification);
@@ -21,22 +33,13 @@ namespace MSpecRunner
 		
 		public override void OnSpecificationEnd (SpecificationInfo specification, Machine.Specifications.Result result)
 		{
-		    var doc = IdeApp.Workbench.ActiveDocument;
-		    var textEditorData = doc.GetContent<ITextEditorDataProvider> ().GetTextEditorData ();
-
-			textEditorData.InsertAtCaret ("  It " + specification.Name);
-
-			Console.WriteLine ("  It " + specification.Name);
+			_console.Log.WriteLine ("  It " + specification.Name);
 			if (!result.Passed)
 			{
 				if (result.Exception != null) 
 				{
-					textEditorData.InsertAtCaret ("Exception : " + result.Exception.Message);
-					textEditorData.InsertAtCaret ("StackTrace : " + result.Exception.StackTrace);
-
-
-					Console.WriteLine ("Exception : " + result.Exception.Message);
-					Console.WriteLine ("StackTrace : " + result.Exception.StackTrace);
+					_console.Log.WriteLine ("Exception : " + result.Exception.Message);
+					_console.Log.WriteLine ("StackTrace : " + result.Exception.StackTrace);
 				} else if (!string.IsNullOrEmpty (result.ConsoleError)) 
 				{
 					Console.WriteLine(result.ConsoleError);
@@ -47,17 +50,12 @@ namespace MSpecRunner
 		
 		public override void OnContextStart (ContextInfo context)
 		{
-		    var doc = IdeApp.Workbench.ActiveDocument;
-		    var textEditorData = doc.GetContent<ITextEditorDataProvider> ().GetTextEditorData ();
-			textEditorData.InsertAtCaret(context.FullName);
-			Console.WriteLine (context.FullName);
+			_console.Log.WriteLine (context.FullName);
 			base.OnContextStart (context);
 		}
 		
 		public override void OnContextEnd (ContextInfo context)
 		{
-
-			Console.WriteLine("");
 			base.OnContextEnd (context);
 		}
 		

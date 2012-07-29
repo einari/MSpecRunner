@@ -4,6 +4,7 @@ using MonoDevelop.Components.Commands;
 using MonoDevelop.Ide;
 using MonoDevelop.Ide.Gui;
 using MonoDevelop.Ide.Gui.Content;
+using MonoDevelop.Core.Execution;
 using Mono.TextEditor;
 using MSpecRunner.Ninject;
 using Machine.Specifications.Runner;
@@ -18,7 +19,19 @@ namespace MSpecRunner
     {
 		protected override void Run ()
 		{
-		    var doc = IdeApp.Workbench.ActiveDocument;
+			IdeApp.Workbench.SaveAll();
+
+
+			var doc = IdeApp.Workbench.ActiveDocument;
+
+			var textEditorData = doc.GetContent<ITextEditorDataProvider> ().GetTextEditorData ();
+
+			var project = IdeApp.Workspace.GetProjectContainingFile (doc.FileName);
+			var targetFile = project.GetOutputFileName (project.DefaultConfiguration.Selector).FullPath;
+
+			var sourceFile = doc.FileName;
+			var lineNumber = textEditorData.Caret.Line;
+
 			/*
 			var operation = doc.Build ();
 
@@ -26,26 +39,29 @@ namespace MSpecRunner
 			if( !operation.Success )
 				return;*/
 
-			//IdeApp.ProjectOperations.CurrentSelectedProject.Build()
+			var manager = new ProgressMonitorManager();
+			var build = manager.GetBuildProgressMonitor ();
+
+			IdeApp.ProjectOperations.CurrentSelectedProject.Build(build, project.DefaultConfiguration.Selector);
 
 
+			IdeApp.Workbench.StatusBar.ShowMessage("Executing specifications");
 
-		    var textEditorData = doc.GetContent<ITextEditorDataProvider> ().GetTextEditorData ();
 
-			var project = IdeApp.Workspace.GetProjectContainingFile(doc.FileName);
-			var targetFile = project.GetOutputFileName(project.DefaultConfiguration.Selector).FullPath;
+			using (var context = IdeApp.Workbench.StatusBar.CreateContext()) 
+			{
 
-			var sourceFile = doc.FileName;
-			var lineNumber = textEditorData.Caret.Line;
-
-			var kernel = new ConventionKernel ();
-			var listener = new Listener ();
-			var runner = new DefaultRunner (listener, new RunOptions (new string[] {  }, new string[] {  }, new string[] {} ));
-			kernel.Bind<ISpecificationRunner> ().ToConstant (runner);
+				var kernel = new ConventionKernel ();
+				var listener = new Listener ();
+				var runner = new DefaultRunner (listener, new RunOptions (new string[] {  }, new string[] {  }, new string[] {}));
+				kernel.Bind<ISpecificationRunner> ().ToConstant (runner);
 		
-			var executor = kernel.Get<ISpecificationsExecutor> ();
-			executor.Execute (targetFile, sourceFile, lineNumber);
+				var executor = kernel.Get<ISpecificationsExecutor> ();
 
+				executor.Execute (targetFile, sourceFile, lineNumber);
+			}
+
+			IdeApp.Workbench.StatusBar.ShowMessage ("Specifications executed");
 			/*
 			textEditorData.InsertAtCaret(
 				string.Format("Target : {0} - Source : {1} - Line : {2}", 
