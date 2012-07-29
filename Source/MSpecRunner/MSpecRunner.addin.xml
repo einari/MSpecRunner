@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Addin namespace   = "MonoDevelop.Samples"
+       id          = "DateInserter"
+       name        = "Date Inserter"
+       author      = "Michael Hutchinson"
+       copyright   = "MIT/X11"
+       url         = "http://www.monodevelop.com"
+       description = "Provides a command to insert the date into the curent document."
+       category    = "Source Editor Extensions"
+       version     = "1.0">
+
+    <Dependencies>
+        <Addin id="::MonoDevelop.Ide" version="3.0"/>
+    </Dependencies>
+
+    <Extension path = "/MonoDevelop/Ide/Commands/Edit">
+        <Command id = "MonoDevelop.Samples.DateInserter.DateInserterCommands.InsertDate"
+                 _label = "Insert Date"
+                 _description = "Insert the current date"
+                 defaultHandler = "MonoDevelop.Samples.DateInserter.InsertDateHandler"
+                  />
+    </Extension>
+
+    <Extension path = "/MonoDevelop/Ide/MainMenu/Edit">
+        <CommandItem id="MonoDevelop.Samples.DateInserter.DateInserterCommands.InsertDate" />
+    </Extension>
+</Addin>

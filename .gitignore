@@ -1,6 +1,34 @@
-# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
 bin
 obj
+*.suo
+*.ldf
+*.LDF
+*.user
+Source/Documentation/DocumentX/*
+Documentation/build/**/*
+current_version.txt
+lastbuild.txt
+version.txt
+*.version
+_ReSharper.*
+packages
+*.pidb
+*.userprefs
+*.pdb
+*.idb
+*.vspscc
+*.xap
+*.fbl7
+*.fb7lck
+*.fbpinf
+*.test-cache
+*.ncrunch*
+*.sublime-workspace
 
-# mstest test results
-TestResults
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
