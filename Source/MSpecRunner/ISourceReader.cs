@@ -1,5 +1,6 @@
 using System;
-namespace MonoDevelop.MSpecRunner
+
+namespace MSpecRunner
 {
 	public interface ISourceReader
 	{

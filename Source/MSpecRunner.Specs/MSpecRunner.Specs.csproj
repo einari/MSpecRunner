@@ -54,7 +54,9 @@
     <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_not_been_defined.cs" />
     <Compile Include="Specifications\for_SpecificationsToRun\when_a_class_has_not_been_defined_but_specifications_has.cs" />
     <Compile Include="Specifications\for_SpecificationsToRun\given\a_specifications_to_run_instance.cs" />
-    <Compile Include="FakeSpecs.cs" />
+    <Compile Include="FakeSpecs.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

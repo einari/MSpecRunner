@@ -63,6 +63,8 @@
     <Compile Include="Specifications\SpecificationManager.cs" />
     <Compile Include="Specifications\SpecificationsExecutor.cs" />
     <Compile Include="Specifications\SpecificationsToRun.cs" />
+    <Compile Include="ISourceReader.cs" />
+    <Compile Include="Listener.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
