@@ -4,3 +4,4 @@ echo Addins : $ADDINS_DIR
 echo TargetDir : $TARGET_DIR
 mkdir -p $TARGET_DIR
 cp -v bin/debug/*.dll $TARGET_DIR
+cp -v bin/debug/*.mdb $TARGET_DIR
