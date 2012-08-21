@@ -18,7 +18,6 @@ namespace MSpecRunner.Specs.Specifications.for_SpecificationsExecutor
 
 		It should_fail = () => false.ShouldEqual(true);
 		It should_run_the_namespace = () => specification_runner_mock.Verify(s=>s.RunNamespace(specifications_to_run.TargetAssembly, specifications_to_run.Namespace));
-
 	}
 }
 
