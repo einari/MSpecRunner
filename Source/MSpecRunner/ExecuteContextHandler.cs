@@ -11,7 +11,7 @@ using Machine.Specifications.Runner;
 using Machine.Specifications.Runner.Impl;
 using Ninject;
 using MSpecRunner.Specifications;
-
+using MonoDevelop.Debugger;
 
 namespace MSpecRunner
 {
@@ -32,17 +32,13 @@ namespace MSpecRunner
 			var sourceFile = doc.FileName;
 			var lineNumber = textEditorData.Caret.Line;
 
-			/*
-			var operation = doc.Build ();
-
-			operation.WaitForCompleted();
-			if( !operation.Success )
-				return;*/
-
 			var manager = new ProgressMonitorManager();
 			var build = manager.GetBuildProgressMonitor ();
 
 			IdeApp.ProjectOperations.CurrentSelectedProject.Build(build, project.DefaultConfiguration.Selector);
+
+
+
 
 
 			IdeApp.Workbench.StatusBar.ShowMessage("Executing specifications");
@@ -62,14 +58,6 @@ namespace MSpecRunner
 			}
 
 			IdeApp.Workbench.StatusBar.ShowMessage ("Specifications executed");
-			/*
-			textEditorData.InsertAtCaret(
-				string.Format("Target : {0} - Source : {1} - Line : {2}", 
-			              targetFile, sourceFile, lineNumber));*/
-
-				/*
-		    string date = DateTime.Now.ToString ();
-		    textEditorData.InsertAtCaret (date);*/
 		}       
 
 		protected override void Update (CommandInfo info)
