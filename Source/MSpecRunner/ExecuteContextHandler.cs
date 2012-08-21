@@ -11,7 +11,6 @@ using Machine.Specifications.Runner;
 using Machine.Specifications.Runner.Impl;
 using Ninject;
 using MSpecRunner.Specifications;
-using MonoDevelop.Debugger;
 
 namespace MSpecRunner
 {
@@ -38,9 +37,6 @@ namespace MSpecRunner
 			IdeApp.ProjectOperations.CurrentSelectedProject.Build(build, project.DefaultConfiguration.Selector);
 
 
-
-
-
 			IdeApp.Workbench.StatusBar.ShowMessage("Executing specifications");
 
 
@@ -53,7 +49,6 @@ namespace MSpecRunner
 				kernel.Bind<ISpecificationRunner> ().ToConstant (runner);
 		
 				var executor = kernel.Get<ISpecificationsExecutor> ();
-
 				executor.Execute (targetFile, sourceFile, lineNumber);
 			}
 
@@ -68,3 +63,17 @@ namespace MSpecRunner
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
